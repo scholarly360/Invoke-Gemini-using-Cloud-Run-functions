@@ -1,0 +1,6 @@
+# ignore all logs
+*.log
+*.env
+.cache
+.venv
+uploads/*

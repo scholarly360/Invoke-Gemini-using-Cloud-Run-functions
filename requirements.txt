@@ -1,0 +1,4 @@
+fastapi
+vellox
+google-genai
+httpx

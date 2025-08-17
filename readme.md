@@ -1,8 +1,7 @@
 
-From Zero to Vertex AI: Invoke Gemini using Cloud Run functions
+# From Zero to Vertex AI: Invoke Gemini using Cloud Run functions
 
 Cloud Run Functions is essentially the evolution of what used to be called Cloud Functions, now unified under the Cloud Run infrastructure. In August 2024, Cloud Functions was officially rebranded as Cloud Run Functions, merging with Cloud Run to offer a unified serverless platform that delivers more control and flexibility.
-
 You deploy function code directly (source-based), and Google handles containerization unlike Cloud Run.
 
 Cloud Run Functions offers higher abstraction—focus on business logic, not infrastructure.
@@ -36,15 +35,16 @@ HTTPBearer primarily handles the presence and extraction of the Bearer token.
 
 ### Dev Setup
 Use devcontainer to install ( I am using so this is easy )
-
 create main.py with fastapi and vellox
 
 ### Enable Services
-gcloud services enable artifactregistry.googleapis.com cloudbuild.googleapis.com run.googleapis.com logging.googleapis.com aiplatform.googleapis.com
+
+>> gcloud services enable artifactregistry.googleapis.com cloudbuild.googleapis.com run.googleapis.com logging.googleapis.com aiplatform.googleapis.com
 
 ### IAM 
 [In IAM give project role of 'roles/aiplatform.user' to current project](https://cloud.google.com/vertex-ai/generative-ai/docs/start/api-keys?usertype=existinguser) 
 
 ### Deploy with ENV, Variables
-gcloud run deploy fastapi-func --source . --function handler --base-image python313 --region asia-south1 --set-env-vars API_TOKEN="damn-long-token",GOOGLE_GENAI_USE_VERTEXAI=True,GOOGLE_CLOUD_LOCATION=global  --allow-unauthenticated
+
+>> gcloud run deploy fastapi-func --source . --function handler --base-image python313 --region asia-south1 --set-env-vars API_TOKEN="damn-long-token",GOOGLE_GENAI_USE_VERTEXAI=True,GOOGLE_CLOUD_LOCATION=global  --allow-unauthenticated
 
